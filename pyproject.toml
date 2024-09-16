@@ -1,0 +1,84 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hatch-calver"
+description = "Hatch plugin for CalVer versioning"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+dependencies = ["hatchling"]
+dynamic = ["version"]
+
+authors = [
+    { name = "Aarni Koskela", email = "akx@iki.fi" },
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Hatch",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: OS Independent",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Software Development",
+]
+
+[project.urls]
+Repository = "https://github.com/akx/hatch-calver"
+Issues = "https://github.com/akx/hatch-calver/issues"
+PyPI = "https://pypi.org/project/hatch-calver/"
+
+[project.entry-points.hatch]
+calver = "hatch_calver.hatch_hooks"
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov"]
+
+[tool.hatch.version]
+path = "src/hatch_calver/__init__.py"
+scheme = "calver"
+calver-scheme = "YYYY.MM.DD"
+
+[tool.coverage.report]
+exclude_lines = [
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
+
+[tool.ruff]
+line-length = 110
+
+[tool.ruff.lint]
+select = [
+    "B",
+    "COM812",
+    "D",
+    "E",
+    "EM",
+    "F",
+    "I",
+    "PT",
+    "S",
+    "W",
+]
+ignore = [
+    "D100",
+    "D101",
+    "D104",
+    "D211",
+    "D213",
+    "E501",
+    "TRY003",
+]
+[tool.ruff.lint.extend-per-file-ignores]
+"tests/*" = [
+    "D",
+    "ANN",
+    "S101",
+]
