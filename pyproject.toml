@@ -7,7 +7,7 @@ name = "hatch-calver"
 description = "Hatch plugin for CalVer versioning"
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.9"
+requires-python = ">=3.7"
 dependencies = ["hatchling"]
 dynamic = ["version"]
 
@@ -25,7 +25,12 @@ classifiers = [
     "Operating System :: Microsoft :: Windows",
     "Operating System :: OS Independent",
     "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Software Development",
 ]
 
@@ -66,6 +71,7 @@ select = [
     "PT",
     "S",
     "W",
+    "UP",
 ]
 ignore = [
     "D100",
