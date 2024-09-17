@@ -16,15 +16,21 @@ jobs:
         os:
           - ubuntu-latest
         python-version:
+          - "3.7"
+          - "3.8"
           - "3.9"
-          - "3.x"
+          - "3.10"
+          - "3.11"
+          - "3.12"
+          - "3.13"
     steps:
       - uses: actions/checkout@v4
       - name: "Set up Python ${{ matrix.python-version }}"
         uses: actions/setup-python@v5
         with:
-          python-version: "${{ matrix.python-version }}"
+          allow-prereleases: "true"
           cache: pip
+          python-version: "${{ matrix.python-version }}"
       - run: "pip install -e .[dev]"
       - run: py.test -vvv --cov .
 
@@ -33,6 +39,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pre-commit/action@v3.0.1
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
 
   Build:
     runs-on: ubuntu-latest
