@@ -56,9 +56,21 @@ In other words, if you specify `YYYY.MM.DD` as your scheme, and it's the 16th of
 | Original version | Command                 | New version     |
 | ---------------- | ----------------------- | --------------- |
 | `2024.07.22`     | `hatch version release` | `2024.09.16`    |
+| `2024.07.22.1`   | `hatch version release` | `2024.09.16`    |
 | `2024.07.22`     | `hatch version date,a`  | `2024.09.16a0`  |
 | `2021.01.01`     | `hatch version rc`      | `2021.01.01rc0` |
 | `2024.7.22`      | `hatch version patch`   | `2024.07.22.1`  |
+
+## Version history
+
+### 2024.9.17
+
+- Initial release
+
+### 2024.9.26
+
+- Changed the `date`/`release` bump instructions to reset any non-date segments.
+  In other words, a `release` bump from `2024.07.22.1` no longer results in `2024.09.16.1`.
 
 [hatch]: https://hatch.pypa.io/
 [hatch_version_updating]: https://hatch.pypa.io/latest/version/#updating

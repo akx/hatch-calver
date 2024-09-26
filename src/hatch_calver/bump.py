@@ -72,12 +72,7 @@ def bump_calver(
     instructions = desired_version.split(",")
     for inst in instructions:
         if inst in {"date", "release"}:
-            # Update the prefix of the current `release`,
-            # but keep the remaining (non-specified) parts as-is.
-            release = (
-                *(_map_scheme_part(part, version_date) for part in scheme_parts),
-                *v.release[len(scheme_parts) :],
-            )
+            release = tuple(_map_scheme_part(part, version_date) for part in scheme_parts)
             v._version = v._version._replace(release=release)
             _update_version(v, release=release)
         elif inst in {"micro", "patch", "fix"}:
