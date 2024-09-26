@@ -11,6 +11,8 @@ cases = [
     ("0", "release", "2024.9.16", "YYYY.MM.DD"),
     ("0", "date", "2024.09.16", "YYYY.0M.DD"),
     ("0.0", "date", "24.38", "YY.WW"),
+    # Test that `release`/`date` instructions reset the patch level
+    ("2024.9.15.1", "release", "2024.9.16", "YYYY.MM.DD"),
     # Test patch
     ("2024.09.16", "patch", "2024.09.16.1", "YYYY.0M.DD"),
     ("2024.09.16.1", "patch", "2024.09.16.2", "YYYY.0M.DD"),
@@ -24,7 +26,7 @@ cases = [
     ("2024.09.16", "dev", "2024.9.16.dev0", "YYYY.M.DD"),
     # Weird long instructions
     ("2024.09.16.42", "patch,micro,fix,post,post", "2024.09.16.45.post1", "YYYY.0M.DD"),
-    ("2024.09.10.1.post3", "date,patch,micro,fix,post,post", "24.09.16.4.post1", "YY.0M.DD"),
+    ("2024.09.10.1.post3", "date,patch,micro,fix,post,post", "24.09.16.3.post1", "YY.0M.DD"),
     # Cases which do not update the date part (`release`/`date` not specified)
     ("2023", "patch", "2023.1", "YYYY"),
     ("2023.12", "patch", "2023.12.1", "YYYY.MM"),
